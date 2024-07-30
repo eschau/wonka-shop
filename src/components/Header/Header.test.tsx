@@ -1,6 +1,6 @@
 import { render } from '@test-utils';
 import { Header } from './Header';
-import { links } from '@/constants';
+import { LINKS } from '@/constants';
 
 describe('Header', () => {
   const subject = () => render(<Header opened={false} toggle={vi.fn()} />);
@@ -12,7 +12,7 @@ describe('Header', () => {
 
   it('displays header links', () => {
     const { getByRole } = subject();
-    links.forEach(({ label, icon }) => {
+    LINKS.forEach(({ label, icon }) => {
       const link = getByRole('link', { name: label });
       expect(link).toBeInTheDocument();
       if (icon) {

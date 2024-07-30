@@ -1,7 +1,7 @@
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { Navbar } from './Navbar';
-import { links } from '@/constants';
+import { LINKS } from '@/constants';
 
 describe('Header', () => {
   const renderWithRouter = (initialEntries: string[]) =>
@@ -15,7 +15,7 @@ describe('Header', () => {
 
   it('displays all links with labels', () => {
     const { getByRole } = renderWithRouter(['/']);
-    links.forEach(({ label, icon }) => {
+    LINKS.forEach(({ label, icon }) => {
       const link = getByRole('link', { name: label });
       expect(link).toBeInTheDocument();
       if (icon) {

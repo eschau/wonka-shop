@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classes from './Navbar.module.css';
-import { links } from '@/constants';
+import { LINKS } from '@/constants';
 
 export function Navbar({ toggle }: { toggle: () => void }) {
   const [active, setActive] = useState('Home');
@@ -9,10 +9,10 @@ export function Navbar({ toggle }: { toggle: () => void }) {
 
   useEffect(() => {
     const currentPath = location.pathname;
-    setActive(links.find((link) => link.route === currentPath)?.label || '');
+    setActive(LINKS.find((link) => link.route === currentPath)?.label || '');
   }, []);
 
-  const navItems = links.map((item) => (
+  const navItems = LINKS.map((item) => (
     <Link
       className={classes.link}
       data-active={item.label === active || undefined}

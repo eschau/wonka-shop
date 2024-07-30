@@ -3,7 +3,7 @@ import { IconSearch } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import classes from './Header.module.css';
 import { HeaderItem } from './HeaderItem';
-import { links } from '@/constants';
+import { LINKS } from '@/constants';
 
 interface HeaderProps {
   opened: boolean;
@@ -11,7 +11,7 @@ interface HeaderProps {
 }
 
 export function Header({ opened, toggle }: HeaderProps) {
-  const items = links.map((link) => <HeaderItem {...link} key={link.label} />);
+  const items = LINKS.map((link) => <HeaderItem {...link} key={link.label} />);
 
   return (
     <header className={classes.header}>
