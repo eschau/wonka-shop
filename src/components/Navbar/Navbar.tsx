@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classes from './Navbar.module.css';
 import { links } from '@/constants';
 
-export function Navbar() {
+export function Navbar({ toggle }: { toggle: () => void }) {
   const [active, setActive] = useState('Home');
   const location = useLocation();
 
@@ -20,6 +20,7 @@ export function Navbar() {
       key={item.label}
       onClick={() => {
         setActive(item.label);
+        toggle();
       }}
     >
       {item.icon && <item.icon className={classes.linkIcon} stroke={1.5} />}
