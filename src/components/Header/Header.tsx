@@ -1,36 +1,22 @@
-import { Autocomplete, Group, Burger, rem, Title, Stack, Text } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconSearch, IconShoppingCart, TablerIcon } from '@tabler/icons-react';
+import { Autocomplete, Group, Burger, rem, Title } from '@mantine/core';
+import { IconSearch } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import classes from './Header.module.css';
+import { HeaderItem } from './HeaderItem';
+import { links } from '@/constants';
 
-type Link = {
-  route: string;
-  label: string;
-  icon?: TablerIcon;
-};
-
-const links: Link[] = [
-  { route: '/', label: 'Home', icon: undefined },
-  { route: '/cart', label: 'Shopping Cart', icon: IconShoppingCart },
-];
-
-function HeaderItem({ route, label, icon: Icon }: Link) {
-  return (
-    <a key={label} href={route} className={classes.link} aria-label={label}>
-      {Icon ? <Icon /> : label}
-    </a>
-  );
+interface HeaderProps {
+  opened: boolean;
+  toggle: () => void;
 }
 
-export function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
-
+export function Header({ opened, toggle }: HeaderProps) {
   const items = links.map((link) => <HeaderItem {...link} key={link.label} />);
 
   return (
     <header className={classes.header}>
       <div className={classes.inner}>
-        <Group>
+        <Group h="100%" px="md">
           <Burger
             opened={opened}
             onClick={toggle}
@@ -38,9 +24,11 @@ export function Header() {
             hiddenFrom="sm"
             aria-label="Toggle navigation"
           />
-          <Title order={1} c="deep-purple">
-            Wonka's
-          </Title>
+          <Link to="/" aria-label="Navigate to home">
+            <Title order={1} c="gold.7">
+              Wonka&apos;s
+            </Title>
+          </Link>
         </Group>
 
         <Group>
