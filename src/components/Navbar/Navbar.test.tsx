@@ -8,7 +8,7 @@ describe('Header', () => {
     render(
       <MemoryRouter initialEntries={initialEntries}>
         <Routes>
-          <Route path="*" element={<Navbar />} />
+          <Route path="*" element={<Navbar toggle={vi.fn()} />} />
         </Routes>
       </MemoryRouter>
     );
