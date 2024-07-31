@@ -35,7 +35,7 @@ export function Product({ product }: { product: ProductType }) {
           min={1}
           max={99}
         />
-        <Button onClick={handleAddToCart} disabled={!isAvailable}>
+        <Button radius="lg" onClick={handleAddToCart} disabled={!isAvailable}>
           {isAvailable ? 'Add to Cart' : 'Unavailable'}
         </Button>
       </Flex>
