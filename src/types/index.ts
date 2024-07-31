@@ -1,1 +1,2 @@
-export * from './LinkType';
+export * from './Link';
+export * from './Product';

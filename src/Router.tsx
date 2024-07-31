@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { AppShell } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { HomePage } from './pages/Home.page';
+import { HomePage } from './pages/Home/Home.page';
 import { Header } from '@/components/Header/Header';
 import { CartPage } from './pages/Cart.page';
 import { Navbar } from './components/Navbar/Navbar';
@@ -12,8 +12,8 @@ const Layout = () => {
   return (
     <AppShell
       header={{ height: 50 }}
-      navbar={{ width: '100%', breakpoint: 'sm', collapsed: { mobile: !opened } }}
-      padding="md"
+      navbar={{ width: 0, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      padding="xl"
     >
       <AppShell.Header>
         <Header opened={opened} toggle={toggle} />
