@@ -28,7 +28,7 @@ export function Products() {
       spacing={{ base: 10, sm: 'xl' }}
       verticalSpacing={{ base: 'md', sm: 'xl' }}
     >
-      {data?.map((product) => <Product key={product.id} {...product} />)}
+      {data?.map((product) => <Product key={product.id} product={product} />)}
     </SimpleGrid>
   );
 }

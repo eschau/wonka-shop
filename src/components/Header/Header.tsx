@@ -1,9 +1,10 @@
-import { Autocomplete, Group, Burger, rem, Title } from '@mantine/core';
+import { Autocomplete, Group, Burger, rem, Title, Button } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import classes from './Header.module.css';
 import { HeaderItem } from './HeaderItem';
 import { LINKS } from '@/constants';
+import { useCart } from '@/context/useCart';
 
 interface HeaderProps {
   opened: boolean;
@@ -11,6 +12,7 @@ interface HeaderProps {
 }
 
 export function Header({ opened, toggle }: HeaderProps) {
+  const { openCart } = useCart();
   const items = LINKS.map((link) => <HeaderItem {...link} key={link.label} />);
 
   return (
@@ -45,6 +47,7 @@ export function Header({ opened, toggle }: HeaderProps) {
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
             {items}
           </Group>
+          <Button onClick={openCart}>Open Cart</Button>
         </Group>
       </div>
     </header>
