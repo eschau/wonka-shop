@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { AppShell } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { HomePage } from './pages/Home.page';
+import { HomePage } from './pages/Home/Home.page';
 import { Header } from '@/components/Header/Header';
 import { CartPage } from './pages/Cart.page';
 import { Navbar } from './components/Navbar/Navbar';

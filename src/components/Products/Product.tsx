@@ -7,13 +7,13 @@ export function Product({ name, imageSrc, description, price, isAvailable }: Par
   return (
     <Container size="xxs" p="sm" classNames={{ root: classes.root }}>
       <Flex direction="column" gap="xs">
-        <Image width="100%" radius="md" fit="cover" src={imageSrc} />
+        <Image width="100%" radius="md" fit="cover" src={imageSrc} alt={name} />
         <Text fw={700}>{name}</Text>
         <Text size="sm" truncate="end">
           {description}
         </Text>
         <Text>{formatPrice(price)}</Text>
-        <Button disabled={!isAvailable}>Add to cart</Button>
+        <Button disabled={!isAvailable}>{isAvailable ? 'Add to Cart' : 'Unavailable'}</Button>
       </Flex>
     </Container>
   );

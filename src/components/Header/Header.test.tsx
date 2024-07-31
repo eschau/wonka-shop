@@ -1,4 +1,4 @@
-import { render } from '@test-utils';
+import { render } from '../../../test-support';
 import { Header } from './Header';
 import { LINKS } from '@/constants';
 
