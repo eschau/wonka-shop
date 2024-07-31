@@ -33,11 +33,14 @@ export function Header({ opened, toggle }: HeaderProps) {
 
         <Group>
           <Autocomplete
-            className={classes.search}
+            classNames={{ input: classes.root }}
             placeholder="Search"
-            leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
+            leftSection={
+              <IconSearch color="purple" style={{ width: rem(16), height: rem(16) }} stroke={2} />
+            }
             data={[]}
             visibleFrom="xs"
+            radius="md"
           />
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
             {items}

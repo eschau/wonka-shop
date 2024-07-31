@@ -12,8 +12,8 @@ const Layout = () => {
   return (
     <AppShell
       header={{ height: 50 }}
-      navbar={{ width: '100%', breakpoint: 'sm', collapsed: { mobile: !opened } }}
-      padding="md"
+      navbar={{ width: 0, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      padding="xl"
     >
       <AppShell.Header>
         <Header opened={opened} toggle={toggle} />

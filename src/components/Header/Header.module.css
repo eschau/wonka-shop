@@ -28,3 +28,7 @@
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
   }
 }
+
+.root {
+  border-color: var(--mantine-color-deep-purple-9)
+}
