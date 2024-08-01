@@ -21,7 +21,7 @@ export function CartItem(product: Partial<CartItemType>) {
                 variant="outline"
                 onClick={() => removeFromCart(id)}
               >
-                <IconTrash />
+                <IconTrash aria-label="Trash icon" />
               </Button>
             )}
             <Text fw={700} pr="xs">{`${name}`}</Text>

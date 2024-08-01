@@ -1,4 +1,4 @@
-import { render } from '../../../test-support';
+import { mockCart, render } from '@test-support';
 import { Header } from './Header';
 
 describe('Header', () => {
@@ -12,5 +12,11 @@ describe('Header', () => {
   it('displays cart', () => {
     const { getByLabelText } = subject();
     expect(getByLabelText('Cart')).toBeInTheDocument();
+  });
+
+  it('renders the correct cart count', () => {
+    mockCart();
+    const { getByTestId } = subject();
+    expect(getByTestId('cart count')).toHaveTextContent('6');
   });
 });

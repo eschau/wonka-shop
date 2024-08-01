@@ -4,4 +4,5 @@ export type HeaderItem = {
   label: string;
   icon: Icon;
   action: () => void;
+  cartCount?: number;
 };

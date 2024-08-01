@@ -14,16 +14,7 @@
   align-items: center;
 }
 
-.link {
-  display: block;
-  line-height: 1;
-  padding: rem(8px) rem(12px);
-  border-radius: var(--mantine-radius-sm);
-  text-decoration: none;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
-  font-size: var(--mantine-font-size-sm);
-  font-weight: 500;
-
+.cart {
   @mixin hover {
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
   }
@@ -31,4 +22,15 @@
 
 .root {
   border-color: var(--mantine-color-deep-purple-9)
+}
+
+.cartCount {
+  position: absolute;
+  top: 0;
+  right: 9px;
+  background-color: var(--mantine-color-deep-purple-9);
+  color: white;
+  border-radius: 100%;
+  padding: 2px 4px;
+  font-size: 10px;
 }
