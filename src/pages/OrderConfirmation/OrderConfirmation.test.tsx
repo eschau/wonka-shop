@@ -26,7 +26,8 @@ describe('OrderConfirmation', () => {
   it('renders transaction ID and total amount', () => {
     const { getByText } = renderWithRouter([`/order-confirmation/${transactionId}/${totalAmount}`]);
 
-    expect(getByText(`Thank you for your order #${transactionId}`)).toBeInTheDocument();
+    expect(getByText(`Order #${transactionId}`)).toBeInTheDocument();
+    expect(getByText('Thank you!')).toBeInTheDocument();
     expect(
       getByText(`Your total was: ${formatPrice(parseInt(totalAmount, 10))}`)
     ).toBeInTheDocument();

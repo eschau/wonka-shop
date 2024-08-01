@@ -1,4 +1,4 @@
-import { Button, Center, Flex, Text } from '@mantine/core';
+import { Button, Center, Flex, Text, Title } from '@mantine/core';
 import { formatPrice } from '@utils';
 import { Link, useParams } from 'react-router-dom';
 
@@ -9,8 +9,9 @@ export function OrderConfirmationPage() {
   return (
     <Center>
       <Flex direction="column" align="center" gap="sm">
-        <Text size="xl">Thank you for your order {`#${transactionId}`}</Text>
-        <Text size="xl">Your total was: {formatPrice(total)}</Text>
+        <Text size="md">{`Order #${transactionId}`}</Text>
+        <Title fw="700">Thank you!</Title>
+        <Text size="lg">Your total was: {formatPrice(total)}</Text>
         <Link to="/">
           <Button radius="lg">Back to Home</Button>
         </Link>
