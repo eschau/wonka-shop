@@ -1,16 +1,28 @@
-# Mantine Vite template
+# Wonka Store App
 
-## Features
+## Running the app
 
-This template comes with the following features:
+To get started with the Wonka Store App, follow these steps:
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Vitest](https://vitest.dev/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+1. **Clone the repository:**
 
-## npm scripts
+   ```sh
+   git clone https://github.com/your-repo/wonka-store-app.git
+   cd wonka-store-app
+   ```
+
+1. **Install dependencies:**
+
+    ```sh
+    yarn install
+    ```
+
+1. **Run the server**
+    
+    ```sh
+    cp .env.sample .env # One-time task to set up secrets
+    yarn dev            
+    ```
 
 ## Build and dev scripts
 
@@ -29,6 +41,4 @@ This template comes with the following features:
 
 ### Other scripts
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
 - `prettier:write` – formats all files with Prettier
