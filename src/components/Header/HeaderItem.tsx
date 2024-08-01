@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import { Link as LinkType } from '@/types';
+import { Button } from '@mantine/core';
 import classes from './Header.module.css';
+import { HeaderItem as HeaderItemType } from '@/types';
 
-export function HeaderItem({ route, label, icon: Icon }: LinkType) {
+export function HeaderItem({ label, icon: Icon, action }: HeaderItemType) {
   return (
-    <Link key={label} to={route} className={classes.link} aria-label={label}>
-      {Icon ? <Icon /> : label}
-    </Link>
+    <Button onClick={action} variant="transparent" className={classes.link} aria-label={label}>
+      <Icon />
+    </Button>
   );
 }
