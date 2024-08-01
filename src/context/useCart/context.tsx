@@ -1,6 +1,6 @@
 import { useDisclosure } from '@mantine/hooks';
 import { createContext, ReactNode, useMemo, useState } from 'react';
-import { calcTotalPrice, formatPrice } from '@utils';
+import { calcTotalPrice } from '@utils';
 import { CartItem } from '@/types';
 
 type CartContextValue = {
@@ -9,7 +9,9 @@ type CartContextValue = {
   closeCart: () => void;
   cart: CartItem[];
   addToCart: (cartItem: CartItem) => void;
-  total: string;
+  total: number;
+  removeFromCart: (productId: string) => void;
+  clearCart: () => void;
 };
 
 export const CartContext = createContext<CartContextValue | null>(null);
@@ -30,18 +32,28 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  // const clearCart = () => {
-  //   setCart([]);
-  // };
+  const clearCart = () => {
+    setCart([]);
+  };
 
-  const total = useMemo(() => {
-    const totalPrice = calcTotalPrice(cart);
-    return formatPrice(totalPrice);
-  }, [cart]);
+  const removeFromCart = (productId: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  const total = useMemo(() => calcTotalPrice(cart), [cart]);
 
   return (
     <CartContext.Provider
-      value={{ cartOpened: opened, openCart: open, closeCart: close, addToCart, cart, total }}
+      value={{
+        clearCart,
+        cartOpened: opened,
+        openCart: open,
+        closeCart: close,
+        addToCart,
+        cart,
+        total,
+        removeFromCart,
+      }}
     >
       {children}
     </CartContext.Provider>

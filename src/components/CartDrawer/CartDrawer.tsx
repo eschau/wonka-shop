@@ -1,12 +1,46 @@
-import { Button, Divider, Drawer, Group, Text } from '@mantine/core';
+import { Button, Divider, Drawer, em, Group, Text } from '@mantine/core';
 import _ from 'lodash';
+import { useMediaQuery } from '@mantine/hooks';
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import { formatPrice } from '@utils';
 import { useCart } from '@/context/useCart';
 import { CartItem } from './CartItem';
+import { createOrder } from '@/clients/firebase/createOrder';
+import { Order } from '@/types';
+import { Alert } from '../Alert/Alert';
 
 export function CartDrawer() {
-  const { cartOpened, closeCart, cart, total } = useCart();
+  const { cartOpened, closeCart, cart, total, clearCart } = useCart();
+  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
+  const navigate = useNavigate();
 
-  console.log(total, 'TOTAL');
+  const { mutate: submitOrder } = useMutation({
+    mutationFn: (body: Order) => createOrder(body),
+    onSuccess: (transactionId) => {
+      navigate(`/order-confirmation/${transactionId}/${total}`);
+    },
+    onError: (e) => <Alert errorMessage={e.message} />,
+  });
+
+  const orderData: Order = useMemo(
+    () => ({
+      items: cart.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+      })),
+      total,
+    }),
+    [cart, total]
+  );
+
+  const handleCheckout = () => {
+    submitOrder(orderData);
+    closeCart();
+    clearCart();
+  };
+
   return (
     <Drawer
       opened={cartOpened}
@@ -18,6 +52,8 @@ export function CartDrawer() {
       }
       overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
       position="right"
+      size={isMobile ? '100%' : 'sm'}
+      closeButtonProps={{ 'aria-label': 'Close modal' }}
     >
       {_.isEmpty(cart) ? (
         <Text>No items in cart</Text>
@@ -29,9 +65,9 @@ export function CartDrawer() {
           <Divider />
           <Group p="sm" justify="space-between">
             <Text>Total</Text>
-            <Text>{total}</Text>
+            <Text>{formatPrice(total)}</Text>
           </Group>
-          <Button fullWidth mt="lg" radius="lg">
+          <Button onClick={handleCheckout} fullWidth mt="lg" radius="lg">
             Check out
           </Button>
         </>

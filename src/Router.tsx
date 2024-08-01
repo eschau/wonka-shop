@@ -3,8 +3,7 @@ import { AppShell } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { HomePage } from './pages/Home/Home.page';
 import { Header } from '@/components/Header/Header';
-import { CartPage } from './pages/Cart.page';
-import { Navbar } from './components/Navbar/Navbar';
+import { OrderConfirmation } from './pages/OrderConfirmation/OrderConfirmation.page';
 
 const Layout = () => {
   const [opened, { toggle }] = useDisclosure();
@@ -18,9 +17,6 @@ const Layout = () => {
       <AppShell.Header>
         <Header opened={opened} toggle={toggle} />
       </AppShell.Header>
-      <AppShell.Navbar p="md" hiddenFrom="sm">
-        <Navbar toggle={toggle} />
-      </AppShell.Navbar>
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>
@@ -37,8 +33,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/cart',
-        element: <CartPage />,
+        path: '/order-confirmation/:transactionId/:totalAmount',
+        element: <OrderConfirmation />,
       },
     ],
   },
