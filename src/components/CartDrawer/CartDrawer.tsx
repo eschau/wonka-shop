@@ -62,7 +62,7 @@ export function CartDrawer() {
           {cart.map((product) => (
             <CartItem key={product.id} {...product} />
           ))}
-          <Divider />
+          <Divider aria-label="Divider" />
           <Group p="sm" justify="space-between">
             <Text>Total</Text>
             <Text>{formatPrice(total)}</Text>

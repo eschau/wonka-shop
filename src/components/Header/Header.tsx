@@ -2,14 +2,12 @@ import { Group, Title } from '@mantine/core';
 import { IconShoppingCart } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import classes from './Header.module.css';
-import { HeaderItem } from './HeaderItem';
+import { CartHeaderItem } from './CartHeaderItem';
 import { useCart } from '@/context/useCart';
 
 export function Header() {
-  const { openCart } = useCart();
+  const { openCart, numberOfItems } = useCart();
 
-  const HEADER_ITEMS = [{ action: openCart, label: 'Cart', icon: IconShoppingCart }];
-  const items = HEADER_ITEMS.map((link) => <HeaderItem {...link} key={link.label} />);
   return (
     <header className={classes.header}>
       <div className={classes.inner}>
@@ -21,8 +19,13 @@ export function Header() {
           </Link>
         </Group>
         <Group>
-          <Group ml={50} gap={5} className={classes.links}>
-            {items}
+          <Group ml={50} gap={5}>
+            <CartHeaderItem
+              label="Cart"
+              icon={IconShoppingCart}
+              action={openCart}
+              cartCount={numberOfItems}
+            />
           </Group>
         </Group>
       </div>

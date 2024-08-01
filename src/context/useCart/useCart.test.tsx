@@ -67,4 +67,23 @@ describe('CartProvider', () => {
 
     expect(result?.current?.total).toBe(3550);
   });
+
+  it('should calculate the number of items in the cart', () => {
+    const { result } = renderHook(() => React.useContext(CartContext), { wrapper });
+
+    const product1: CartItem = buildItem();
+    const product2: CartItem = buildItem({
+      id: '2',
+      name: 'Silver Lining',
+      price: 500,
+      quantity: 2,
+    });
+
+    act(() => {
+      result?.current?.addToCart(product1);
+      result?.current?.addToCart(product2);
+    });
+
+    expect(result?.current?.numberOfItems).toBe(5);
+  });
 });

@@ -13,6 +13,7 @@ export const mockCart = (overrides: Partial<CartContextValue> = {}) => {
     total: 200,
     removeFromCart: noop,
     clearCart: noop,
+    numberOfItems: 6,
     ...overrides,
   });
 };
