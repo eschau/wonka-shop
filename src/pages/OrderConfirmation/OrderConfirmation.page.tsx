@@ -2,7 +2,7 @@ import { Button, Center, Flex, Text } from '@mantine/core';
 import { formatPrice } from '@utils';
 import { Link, useParams } from 'react-router-dom';
 
-export function OrderConfirmation() {
+export function OrderConfirmationPage() {
   const { transactionId, totalAmount = '0' } = useParams();
   const total = parseInt(totalAmount, 10);
 

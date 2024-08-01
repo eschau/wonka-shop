@@ -2,7 +2,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
 import { Product } from '@/types';
 
-export const getProducts = async (): Promise<Product[] | unknown> => {
+export const getProducts = async (): Promise<Product[]> => {
   try {
     const snapshot = await getDocs(collection(db, 'products'));
     const products: Product[] = snapshot.docs.map((doc) => {

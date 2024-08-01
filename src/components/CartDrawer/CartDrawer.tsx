@@ -20,6 +20,8 @@ export function CartDrawer() {
     mutationFn: (body: Order) => createOrder(body),
     onSuccess: (transactionId) => {
       navigate(`/order-confirmation/${transactionId}/${total}`);
+      clearCart();
+      closeCart();
     },
     onError: (e) => <Alert errorMessage={e.message} />,
   });
@@ -37,8 +39,6 @@ export function CartDrawer() {
 
   const handleCheckout = () => {
     submitOrder(orderData);
-    closeCart();
-    clearCart();
   };
 
   return (

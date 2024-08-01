@@ -1,16 +1,11 @@
-import { Group, Burger, Title } from '@mantine/core';
+import { Group, Title } from '@mantine/core';
 import { IconShoppingCart } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import classes from './Header.module.css';
 import { HeaderItem } from './HeaderItem';
 import { useCart } from '@/context/useCart';
 
-interface HeaderProps {
-  opened: boolean;
-  toggle: () => void;
-}
-
-export function Header({ opened, toggle }: HeaderProps) {
+export function Header() {
   const { openCart } = useCart();
 
   const HEADER_ITEMS = [{ action: openCart, label: 'Cart', icon: IconShoppingCart }];
@@ -19,13 +14,6 @@ export function Header({ opened, toggle }: HeaderProps) {
     <header className={classes.header}>
       <div className={classes.inner}>
         <Group h="100%" px="md">
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            size="sm"
-            hiddenFrom="sm"
-            aria-label="Toggle navigation"
-          />
           <Link to="/" aria-label="Navigate to home">
             <Title order={1} c="gold.7">
               Wonka&apos;s

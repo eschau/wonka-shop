@@ -3,7 +3,7 @@ import { createContext, ReactNode, useMemo, useState } from 'react';
 import { calcTotalPrice } from '@utils';
 import { CartItem } from '@/types';
 
-type CartContextValue = {
+export type CartContextValue = {
   cartOpened: boolean;
   openCart: () => void;
   closeCart: () => void;
